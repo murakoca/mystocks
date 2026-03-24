@@ -1,4 +1,4 @@
-# stock_control_system_complete_fixed.py
+# stock_control_system.py
 import sys
 import os
 import json
@@ -290,7 +290,7 @@ class Database:
             return False, "Ürün bulunamadı"
 
 # ============================================
-# BARKOD OKUYUCU THREAD (GÜNCELLENMİŞ)
+# BARKOD READER THREAD 
 # ============================================
 
 class BarcodeReaderThread(QThread):
@@ -361,7 +361,7 @@ class BarcodeReaderThread(QThread):
                 termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
 
 # ============================================
-# BARKOD SATIŞ/EKLEME MODÜLÜ
+# BARKOD ADD MODULE
 # ============================================
 
 class BarcodeTransactionDialog(QDialog):
@@ -651,7 +651,7 @@ class BarcodeTransactionDialog(QDialog):
             self.transaction_log.takeItem(10)
 
 # ============================================
-# ÜRÜN VERİTABANI
+# PRODUCT.DB
 # ============================================
 
 class ProductDatabase:
@@ -736,7 +736,7 @@ class ProductDatabase:
         }
 
 # ============================================
-# ANA UYGULAMA
+# MAIN APPLICATION
 # ============================================
 
 class StockControlSystem(QMainWindow):
@@ -1531,7 +1531,7 @@ class StockControlSystem(QMainWindow):
         self.tabs.addTab(tab, "💰 Satış/Ekleme")
     
     # ============================================
-    # TEMEL İŞLEVLER
+    # BASICS
     # ============================================
     
     def load_products(self):
